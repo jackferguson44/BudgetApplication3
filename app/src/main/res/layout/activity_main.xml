@@ -10,21 +10,23 @@
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Budget Application"
+        android:layout_marginTop="28dp"
+        android:text="Budget:"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/budgetEdit"
-        android:layout_width="355dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="56dp"
-        android:hint="Enter Budget"
+        android:layout_width="166dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="60dp"
         android:ems="15"
+        android:hint="Enter Budget"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/titleText" />
 
@@ -32,21 +34,58 @@
         android:id="@+id/addBudgetButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="23dp"
         android:text="Add Budget"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/budgetEdit" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/budgetEdit"
+        app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
     <TextView
         android:id="@+id/budgetText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Budget"
+        android:layout_marginTop="4dp"
+        android:text="0"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.406"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addBudgetButton" />
+        app:layout_constraintTop_toTopOf="@+id/titleText" />
+
+    <EditText
+        android:id="@+id/itemEdit"
+        android:layout_width="78dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="144dp"
+        android:ems="15"
+        android:hint="Item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/titleText" />
+
+    <EditText
+        android:id="@+id/costEdit"
+        android:layout_width="78dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="144dp"
+        android:ems="15"
+        android:hint="Cost"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.318"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/titleText" />
+
+    <Button
+        android:id="@+id/addItemButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="175dp"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!--    <Button-->
 <!--        android:id="@+id/addBudgetButton"-->
