@@ -12,10 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyViewHolder> {
+public class BudgetAdapter extends RecyclerView.Adapter<BudgetAdapter.MyViewHolder>  {
     private ArrayList<Budget> budgetList;
 
-    public recyclerAdapter(ArrayList<Budget> budgetList){
+    public BudgetAdapter(ArrayList<Budget> budgetList){
         this.budgetList = budgetList;
     }
 
@@ -24,20 +24,41 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyView
         private TextView costText;
         private Button deleteButton;
 
+        private BudgetAdapter adapter;
+
         public MyViewHolder(final View view){
             super(view);
             itemText = view.findViewById(R.id.itemText);
             costText = view.findViewById(R.id.costText);
-            deleteButton = view.findViewById(R.id.deleteButton);
+            view.findViewById(R.id.deleteButton).setOnClickListener(view1 -> {
+                adapter.budgetList.remove(getAdapterPosition());
+                adapter.notifyItemRemoved(getAdapterPosition());
+            });
 
+
+            //deleteButton.setOnClickListener((View.OnClickListener) this);
         }
+
+        public MyViewHolder linkAdapter(BudgetAdapter adapter){
+            this.adapter = adapter;
+            return this;
+        }
+
+
+//        @Override
+//        public void onClick(View v) {
+//            if(v == dele)
+//        }
     }
+
+
+
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View budgetItems = LayoutInflater.from(parent.getContext()).inflate(R.layout.budget_items, parent, false);
-        return new MyViewHolder(budgetItems);
+        return new MyViewHolder(budgetItems).linkAdapter(this);
     }
 
     @Override

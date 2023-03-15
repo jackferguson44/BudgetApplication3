@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button addItemButton;
     private ArrayList<Budget> budgetList;
     private RecyclerView recyclerView;
+    private BudgetAdapter adapter;
 
 
     @Override
@@ -38,12 +39,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         costEdit = findViewById(R.id.costEdit);
         addItemButton = findViewById(R.id.addItemButton);
         budgetList = new ArrayList<>();
-        recyclerView = findViewById(R.id.recyclerView);
+
+        setAdapter();
 
         addBudgetButton.setOnClickListener(this);
         addItemButton.setOnClickListener(this);
 
-        setAdapter();
+
 
 
     }
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String budgetItem = itemEdit.getText().toString().trim();
             String budgetCost = costEdit.getText().toString().trim();
             addBudgetInfo(budgetItem, budgetCost);
+            adapter.notifyItemInserted(budgetList.size()-1);
 
             itemEdit.getText().clear();
             costEdit.getText().clear();
@@ -73,13 +76,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void addBudgetInfo(String item, String cost){
         budgetList.add(new Budget(item, cost));
+        setAdapter();
     }
 
     private void setAdapter(){
-        recyclerAdapter adapter = new recyclerAdapter(budgetList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView = findViewById(R.id.recyclerView);
+        adapter = new BudgetAdapter(budgetList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+       // recyclerView.setLayoutManager(layoutManager);
+       // recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
+
+
+
     }
 }
